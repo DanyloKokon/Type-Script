@@ -70,6 +70,68 @@ function Task2() {
         alert('Копіювання заборонено!');
     }
 
+    //########################################################################
+    function echo<T>(item: T): T {
+        return item
+    } 
+
+    echo<string>("Item")
+    echo<number>(5)
+    echo<boolean>(true)
+
+    interface Box<T> {
+        content: T;
+    }
+
+   
+    
+    const Con: Box<number> = {content: 5}
+
+    function getFirstElement<T>  (m: T[])  {
+        return m[1] || undefined
+    }
+
+    function mergeData<T, U> (inf1: T, inf2: U){
+        let sum = []
+        sum.push(inf1, inf2)
+        console.log(sum);
+        return sum
+    }
+
+    mergeData({data: 1}, {data: 2})
+
+    interface ApiResponse<T>{
+        status: number
+        data: T
+    }
+
+    interface User {
+        id: number
+        name: string
+    }
+
+    const usersResponse: ApiResponse<User[]> = {
+        status: 200,
+        data: [
+            { id: 1, name: 'Alice' },
+            { id: 2, name: 'Bob' },
+        ],
+    }
+    console.log(usersResponse)
+
+    function printLenght<T extends {lenght: number}> (arg: T) {
+        console.log(arg.lenght);
+        return arg
+    }
+
+    printLenght({lenght: 50})
+    
+
+    //###############################################################
+
+    const [huk, setHuk] = useState<string[]>([])
+    
+
     return (
         <main className="practice-page">
             <section className="practice-panel" aria-labelledby="practice-title">
