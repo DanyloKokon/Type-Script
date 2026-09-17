@@ -130,6 +130,30 @@ function Task2() {
     //###############################################################
 
     const [huk, setHuk] = useState<string[]>([])
+    const [user, setUser] = useState<User | null>(null)
+
+    function getProperty< K  extends number, T extends {keyof: number}> (obj: T, key:K) {
+        console.log(key);
+
+        return key
+    }
+    const ttest = {keyof: 55}
+    getProperty(ttest, ttest.keyof)
+
+    class DataStorage<T> {
+        private data: T[] = []
+
+        addItem(item: T) {
+            this.data.push(item)
+        }
+
+        getItems(): T[] {
+            return this.data
+        }
+    }
+
+
+    
     
 
     return (
